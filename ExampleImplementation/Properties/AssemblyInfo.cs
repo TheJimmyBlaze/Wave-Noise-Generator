@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WaveNoiseLib")]
-[assembly: AssemblyDescription("A library containing functions for genering noise maps based on wave forms.")]
+[assembly: AssemblyTitle("ExampleImplementation")]
+[assembly: AssemblyDescription("An example of how to implement WaveNoiseLib.dll")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("github.com/users/TheJimmyBlaze")]
-[assembly: AssemblyProduct("WaveNoiseLib")]
+[assembly: AssemblyProduct("ExampleImplementation")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f0080074-05de-4b5f-941e-b9bb400db77b")]
+[assembly: Guid("1abce83f-7125-412a-9420-9b70e43c2557")]
 
 // Version information for an assembly consists of the following four values:
 //
