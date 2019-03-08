@@ -1,7 +1,0 @@
-D:\GitHub\WaveNoiseGenerator\ExampleImplementation\bin\Debug\ExampleImplementation.exe.config
-D:\GitHub\WaveNoiseGenerator\ExampleImplementation\bin\Debug\ExampleImplementation.exe
-D:\GitHub\WaveNoiseGenerator\ExampleImplementation\bin\Debug\WaveNoiseLib.dll
-D:\GitHub\WaveNoiseGenerator\ExampleImplementation\obj\Debug\ExampleImplementation.csprojAssemblyReference.cache
-D:\GitHub\WaveNoiseGenerator\ExampleImplementation\obj\Debug\ExampleImplementation.csproj.CoreCompileInputs.cache
-D:\GitHub\WaveNoiseGenerator\ExampleImplementation\obj\Debug\ExampleImplementation.csproj.CopyComplete
-D:\GitHub\WaveNoiseGenerator\ExampleImplementation\obj\Debug\ExampleImplementation.exe

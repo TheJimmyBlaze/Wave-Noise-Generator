@@ -1,4 +1,0 @@
-D:\GitHub\WaveNoiseGenerator\WaveNoiseLib\bin\Debug\WaveNoiseLib.dll
-D:\GitHub\WaveNoiseGenerator\WaveNoiseLib\obj\Debug\WaveNoiseLib.csproj.CoreCompileInputs.cache
-D:\GitHub\WaveNoiseGenerator\WaveNoiseLib\obj\Debug\WaveNoiseLib.dll
-D:\GitHub\WaveNoiseGenerator\WaveNoiseLib\obj\Debug\WaveNoiseLib.csprojAssemblyReference.cache
