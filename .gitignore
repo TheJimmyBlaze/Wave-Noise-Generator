@@ -4,4 +4,8 @@
 .vs/WaveNoiseLib/v15/Server/sqlite3/storage.ide
 .vs/WaveNoiseLib/v15/Server/sqlite3/storage.ide-shm
 .vs/WaveNoiseLib/v15/Server/sqlite3/storage.ide-wal
+
+/bin
+/obj
+
 *.cache
