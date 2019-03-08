@@ -8,8 +8,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using WaveNoiseLib;
 using WaveNoiseLib.WaveGenerator;
 
@@ -27,18 +25,26 @@ namespace ExampleImplementation
             Regex regex = new Regex(string.Format(@"\.{0}$", EXTENSION));
             if (!regex.IsMatch(path))
                 path += EXTENSION;
-            
-            byte[] heightMap = GenerateHeightMap(SIZE);
-            WriteableBitmap bitmap = new WriteableBitmap(SIZE, SIZE, 96, 96, PixelFormats.Bgr32, null);
-            Int32Rect rect = new Int32Rect(0, 0, SIZE, SIZE);
-            bitmap.WritePixels(rect, heightMap, SIZE * 4, 0);
 
-            using (FileStream stream = new FileStream(path, FileMode.Create))
+            LatticeNoiseGenerator generator = new LatticeNoiseGenerator(typeof(SineWave));
+
+            Random random = new Random((int)DateTime.Now.Ticks);
+            int xOffset = random.Next();
+            int yOffset = random.Next();
+
+            byte[] heightMap = new byte[SIZE * SIZE];
+            for (int x = 0; x < SIZE; x++)
             {
-                BmpBitmapEncoder encoder = new BmpBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(bitmap));
-                encoder.Save(stream);
+                for (int y = 0; y < SIZE; y++)
+                {
+                    heightMap[x + y * SIZE] = (byte)generator.Observe(x + xOffset, y + yOffset, SIZE, 255, 0.25, 0.1);
+                }
             }
+
+            Bitmap converted = BitmapConverter.Convert(heightMap, SIZE);
+            Bitmap save = new Bitmap(converted);
+            converted.Dispose();
+            save.Save(path);
 
             Console.WriteLine("Created bitmap: {0}", path);
             Console.WriteLine("Open file? (Y\\N)");
@@ -47,35 +53,6 @@ namespace ExampleImplementation
 
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
-        }
-
-        public static byte[] GenerateHeightMap(int size)
-        {
-            LatticeNoiseGenerator noiseGenerator = new LatticeNoiseGenerator(typeof(SineWave));
-
-            int pixelIndex = 0;
-            byte[] pixels = new byte[size * size * 4];
-
-            Random random = new Random((int)DateTime.Now.Ticks);
-            int xSeed = random.Next();
-            int ySeed = random.Next();
-
-            for (int x = 0; x < size; x++)
-            {
-                for (int y = 0; y < size; y++)
-                {
-                    byte pixelRGB = (byte)noiseGenerator.Observe(x + xSeed, y + ySeed, SIZE, 255, 0.2, 0.25);
-
-                    for (int i = 0; i < 3; i++)
-                    {
-                        pixels[pixelIndex++] = pixelRGB;
-                    }
-
-                    pixels[pixelIndex++] = 255;
-                }
-            }
-
-            return pixels;
         }
 
         private static string PresentInstructions()
