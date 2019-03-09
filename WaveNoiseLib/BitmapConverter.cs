@@ -11,10 +11,21 @@ using System.Windows.Media.Imaging;
 
 namespace WaveNoiseLib
 {
+    /// <summary>
+    /// Converts byte arrays created by <see cref="LatticeNoiseGenerator"/> into bitmap images for increased versatility.
+    /// </summary>
     public static class BitmapConverter
     {
-        public static Bitmap Convert(byte[] bytes, int size)
+        /// <summary>
+        /// Takes a byte array containing heights in coordinant space and returns them output as a bitmap image.
+        /// NOTE: this method will only work for byte arrays where the width and height are equal lengths.
+        /// </summary>
+        /// <param name="bytes">Array of bytes to be converted into a bitmap, this is normally the output form <see cref="LatticeNoiseGenerator"/></param>
+        /// <returns>A bitmap image</returns>
+        public static Bitmap Convert(byte[] bytes)
         {
+            int size = (int)Math.Sqrt(bytes.Length);
+
             int pixelIndex = 0;
             byte[] pixels = new byte[size * size * 4];
 

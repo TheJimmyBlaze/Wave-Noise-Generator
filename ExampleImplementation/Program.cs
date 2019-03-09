@@ -66,14 +66,14 @@ namespace ExampleImplementation
                 {
                     //Populate each of the points in the array one at a time, all we need is a point in coordenant space and some input variables.
                     //I have set the hypothetical size to be the same as the bitmap image we are creating, if you are generating maps without a size constraint, you can really put anything in here.
-                    //The frequency has been set to 0.25, this gives a nice smooth heightmap, if you want it to be noisy, try increasing to 1 or 2. If you want an even smoother map, lower it some more.
-                    //The density has been set to 0.1, this means that the hypotetical size is divided into 10 lattice points each of size 10, and wave forms are attached to these points, and increased density will also increase noisyness.
-                    heightMap[x + y * SIZE] = (byte)generator.Observe(x + xOffset, y + yOffset, SIZE, 255, 0.25, 0.1);
+                    //The density has been set to 0.25, this means that the hypotetical size is divided into 10 lattice points each of size 10, and wave forms are attached to these points, and increased density will also increase noisyness.
+                    //The frequency has been set to 0.2, this gives a nice smooth heightmap, if you want it to be noisy, try increasing to 1 or 2. If you want an even smoother map, lower it some more.
+                    heightMap[x + y * SIZE] = (byte)generator.Observe(x + xOffset, y + yOffset, SIZE, 255, 0.25, 0.2);
                 }
             }
 
             //Return a new bitmap, can't return the raw bitmap, as the converter must be disposed correctly before we can write to file.
-            using (Bitmap raw = BitmapConverter.Convert(heightMap, SIZE))
+            using (Bitmap raw = BitmapConverter.Convert(heightMap))
                 return new Bitmap(raw);
         }
     }
